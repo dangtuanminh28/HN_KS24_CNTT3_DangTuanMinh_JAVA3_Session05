@@ -1,0 +1,12 @@
+Input (Service Layer):
+DishService khởi tạo một danh sách List<Dish> (Mock Data).
+
+Processing (Controller):
+Controller gọi hàm findAll() từ Service để lấy danh sách.
+
+Sử dụng phương thức model.addAttribute("dishes", list),
+trong đó "dishes" là Key (tên biến dùng ở View) và list là Value (dữ liệu thực tế).
+
+Output (View Layer): * Thymeleaf nhận diện Key "dishes".
+
+Sử dụng biểu thức th:each="dish : ${dishes}" để lặp qua từng phần tử và đổ dữ liệu vào các thẻ <td> tương ứng.
