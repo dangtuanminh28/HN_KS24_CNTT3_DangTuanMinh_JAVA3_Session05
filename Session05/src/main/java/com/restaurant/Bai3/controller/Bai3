@@ -1,0 +1,21 @@
+1. Luồng dữ liệu (Data Flow)
+Bước 1: View A gửi ID qua URL GET /bai3/edit/{id}.
+Bước 2: Controller nhận ID, gọi Service tìm đối tượng trong danh sách.
+Bước 3: Đẩy đối tượng vào Model (key: "dish").
+Bước 4: View B nhận Model, đổ dữ liệu vào Form qua th:object.
+
+
+2. Kỹ thuật Thymeleaf (Binding)
+Liên kết form: th:object="${dish}" xác định đối tượng sửa.
+Liên kết trường: th:field="*{name}" (tự động map dữ liệu vào ô input).
+Link động: @{|/bai3/edit/${dish.id}|} giúp tạo URL chứa ID món ăn.
+
+
+3. Bẫy dữ liệu (Safety Check)
+Kiểm tra tồn tại: Dùng if (dishOpt.isEmpty()) để bắt trường hợp ID sai.
+Xử lý: Nếu sai, không mở trang Edit mà return "dish-list" kèm thông báo lỗi errorMessage để tránh trang trắng.
+
+
+4. Xử lý Update (PRG Pattern)
+Dùng @PostMapping để nhận dữ liệu từ Form.
+Sau khi lưu, dùng redirect:/bai3/list để ngăn lỗi gửi lại dữ liệu khi người dùng nhấn F5.
